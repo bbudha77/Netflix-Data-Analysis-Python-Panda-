@@ -23,7 +23,8 @@ This project helped me strengthen my skills in data cleaning, data manipulation,
 I used the *Netflix Movies and TV Shows* dataset, which is publicly available on Kaggle.
 
 - *Source:* Kaggle (Public Dataset)  
-- *Contents:* Title, type, director, cast, country, rating, release year, genre, and more  
+- *Contents:* Title, type, director, cast, country, rating, release year, genre, and more
+- *Link:*https://www.kaggle.com/datasets/padmapriyatr/netflix-titles
 
 ---
 
