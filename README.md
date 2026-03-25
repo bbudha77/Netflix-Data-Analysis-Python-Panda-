@@ -191,22 +191,56 @@ Name: title, dtype: int64
 ```
 ---
 
-### 📌 6. Filtering Example (Movies after 2015 from India)
-
+### 📌 6. Min, Max and Mean Release Year by Country
 ```python
-df[(df['type'] == 'Movie') &
-   (df['release_year'] > 2015) &
-   (df['country'].str.contains("India", na=False))].head()
-
+df.groupby('country').agg({
+'title': 'count',
+'release_year': ['min', 'max']   
+}).sort_values(('title','count'), ascending = False).head(10)
 
 *Output*
 
-	show_id	type	title	director	cast	country	date_added	release_year	rating	duration	listed_in	description
-105	s106	Movie	Angamaly Diaries	Lijo Jose Pellissery	Antony Varghese, Reshma Rajan, Binny Rinky Ben...	India	September 5, 2021	2017	TV-14	128 min	Action & Adventure, Comedies, Dramas	After growing up amidst the gang wars of his h...
-118	s119	Movie	Gurgaon	Shanker Raman	Akshay Oberoi, Pankaj Tripathi, Ragini Khanna,...	India	September 2, 2021	2017	TV-14	106 min	Dramas, International Movies, Thrillers	When the daughter of a wealthy family returns ...
-126	s127	Movie	Shikara	Vidhu Vinod Chopra	Aadil Khan, Sadia Khateeb, Zain Khan Durrani, ...	India	September 2, 2021	2020	TV-14	115 min	Dramas, International Movies, Romantic Movies	A couple must strive to remain resilient after...
-190	s191	Movie	Thimmarusu	Sharan Koppisetty	Satya Dev, Priyanka Jawalkar, Brahmaji	India	August 28, 2021	2021	TV-14	125 min	Dramas, International Movies	Eight years after a young man is framed for mu...
-203	s204	Movie	Kyaa Kool Hain Hum 3	Umesh Ghadge	Tusshar Kapoor, Aftab Shivdasani, Krishna Abhi...	India	August 27, 2021	2016	TV-MA	124 min	Comedies, International Movies	When an unlikely porn actor falls for a woman ...
+	title	release_year
+count	min	max
+country			
+United States	2048	1942	2021
+India	890	1959	2021
+Unknown	422	1960	2021
+United Kingdom	212	1975	2021
+Canada	119	1998	2020
+Spain	106	2008	2021
+Nigeria	90	2003	2021
+Egypt	90	1954	2020
+Japan	85	1979	2021
+France	81	1974	2021
 
-1   Example Movie 2    Movie       India     2018
-2   Example Movie 3    Movie       India     2019
+```
+
+
+## 📈 Key Summary of Insights
+
+- Netflix has significantly more *Movies* than TV Shows.
+- *TV‑MA* is the most common rating across the platform.
+- The *United States, **India, and the **United Kingdom* produce the highest number of titles.
+- Content production increased sharply after *2015*, showing Netflix’s global expansion.
+- Genres such as *Dramas, **Comedies, and **International Movies* dominate the catalog.
+- Groupby analysis reveals clear patterns in content growth and country‑level contributions.
+- Filtering operations helped identify trends such as:
+  - Movies released after 2015  
+  - Titles produced in India  
+  - Non‑US content  
+  - Year‑wise and type‑wise distribution  
+
+---
+
+## 🛠️ Tools & Technologies Used
+
+- *Python*
+- *Pandas*
+- *Jupyter Notebook*
+- *Data Cleaning & Wrangling*
+- *Exploratory Data Analysis (EDA)*
+- *Groupby & Aggregations*
+- *Markdown Documentation*
+
+---
